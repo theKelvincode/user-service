@@ -1,4 +1,8 @@
-package com.oyas.user.service.domain.dto;
+package com.oyas.user.service.dto;
 
-public record UserDTO(long id, String username, String email, String password, String roles ) {
+import com.oyas.user.service.domain.entity.UserRole;
+
+import java.util.Set;
+
+public record UserDTO(long id, String firstName, String lastName, String username, String email, String password, Set<UserRole> roles ) {
 }

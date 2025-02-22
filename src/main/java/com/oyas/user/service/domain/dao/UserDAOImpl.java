@@ -7,7 +7,7 @@ import lombok.*;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDAO {
+public class UserDAOImpl {
 
     private long id;
 
