@@ -3,6 +3,7 @@ package com.oyas.user.service.domain.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -35,6 +36,19 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "user_roles")
-    private Set<UserRole> roles;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<UserRole> roles = new HashSet<>();
+
+    // this constructor is just to test.
+    public User(long id, String firstName, String email) {
+        this.id = id;
+        this.firstName = firstName;
+        this.email = email;
+    }
+
 }

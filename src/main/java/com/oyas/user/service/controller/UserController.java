@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.oyas.user.service.service.IGenericService;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/users/")
+@RequestMapping("/api/users")
 public class UserController {
 
     private final IGenericService genericService;
@@ -31,6 +33,7 @@ public class UserController {
     @GetMapping("")
     ResponseEntity<List<User>> fetchAllUsers() {
         List<User> allUsers = (List<User>) this.genericService.fetchAllObjects(User.class);
+
         return new ResponseEntity<>(allUsers, HttpStatus.OK);
     }
 
@@ -47,6 +50,10 @@ public class UserController {
                 null,
                 user.getRoles()
                 );
+
+
         return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
+
+    //TODO: save user, update user, delete user
 }
