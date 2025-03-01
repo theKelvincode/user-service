@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GenericServiceImpl implements IGenericService {
@@ -30,7 +31,7 @@ public class GenericServiceImpl implements IGenericService {
     }
 
     @Override
-    public <T> T findObjectById(Class<T> obj, Long id) {
+    public <T> Optional<T> findObjectById(Class<T> obj, Long id) {
         return genericDAO.findObjectById(obj, id);
     }
 
@@ -40,7 +41,7 @@ public class GenericServiceImpl implements IGenericService {
     }
 
     @Override
-    public <T> void deletedObject(Class<T> obj) {
+    public <T> void deleteObject(T obj) {
         genericDAO.deleteObject(obj);
     }
 

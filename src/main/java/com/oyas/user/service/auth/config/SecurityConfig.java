@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -22,6 +23,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 
     private final AuthenticationProvider authProvider;
@@ -42,7 +44,7 @@ public class SecurityConfig {
         http
 			.csrf(AbstractHttpConfigurer::disable)
             . authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("api/auth/**")
+                .requestMatchers("/api/auth/**")
                 .permitAll()
             ).authorizeHttpRequests(authorize -> authorize
                 .anyRequest()

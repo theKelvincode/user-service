@@ -1,16 +1,20 @@
 package com.oyas.user.service.generics.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IGenericDAO {
 
-    List<?> getAllObjects(Class<?> clazz);
-
     <T> void saveObject(T entity);
 
-    <T> T findObjectById(Class<T> tClass, Long id);
+    List<?> getAllObjects(Class<?> tClass);
+
+    <T> Optional<T> findObjectById(Class<T> tClass, Long id);
+
+    // TODO; WRITE A GLOBAL METHOD TO FIND OBJECT BY FIELD & CLASS
+//    <T> T findObjectByName(Class<T> tClass, String name);
 
     <T> void updateObject(T entity);
 
-    <T> void deleteObject(Class<T> tClass);
+    <T> void deleteObject(T obj);
 }

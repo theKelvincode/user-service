@@ -23,7 +23,7 @@ public class AuthenticationController {
     private final AuthService authService;
 
     @PostMapping("/signup")
-    public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) {
+    public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) throws Exception {
         User registeredUser = authService.signUp(registerUserDto);
 
         return ResponseEntity.ok(registeredUser);
