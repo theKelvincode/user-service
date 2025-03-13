@@ -1,11 +1,12 @@
-package com.oyas.user.service.service;
+package com.oyas.user.service.generics.service;
 
-import com.oyas.user.service.generic.dao.GenericDAOImpl;
-import com.oyas.user.service.generic.dao.IGenericDAO;
+import com.oyas.user.service.generics.dao.GenericDAOImpl;
+import com.oyas.user.service.generics.dao.IGenericDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GenericServiceImpl implements IGenericService {
@@ -30,8 +31,8 @@ public class GenericServiceImpl implements IGenericService {
     }
 
     @Override
-    public <T> T findObjectById(Class<T> obj, Long id) {
-        return genericDAO.getObject(obj, id);
+    public <T> Optional<T> findObjectById(Class<T> obj, Long id) {
+        return genericDAO.findObjectById(obj, id);
     }
 
     @Override
@@ -40,7 +41,7 @@ public class GenericServiceImpl implements IGenericService {
     }
 
     @Override
-    public <T> void deletedObject(Class<T> obj) {
+    public <T> void deleteObject(T obj) {
         genericDAO.deleteObject(obj);
     }
 
