@@ -42,6 +42,7 @@ public class GenericDAOImpl implements IGenericDAO {
         entityManager.merge(entity);
     }
 
+    @Transactional
     public <T> void deleteObject(T entity) {
         entityManager.remove(entity);
     }
