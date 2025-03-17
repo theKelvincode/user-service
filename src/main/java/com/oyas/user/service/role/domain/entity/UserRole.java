@@ -39,4 +39,10 @@ public class UserRole {
     @Column(name = "updated_at")
     private Date updatedAt;
 
+    @Override
+    public String toString() {
+        return "UserRole{" +
+                "name=" + name +
+                '}';
+    }
 }
